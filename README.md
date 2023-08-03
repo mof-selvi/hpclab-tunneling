@@ -119,7 +119,7 @@ chmod +x ./start.sh
 
 
 
-# the response will be something like "your url is: https://xxx-yyy-zzz.loca.lt", connect directly to it
+# the response will be something like "your url is: https://{yourusername}-hpc.loca.lt", connect directly to it
 # the website will ask you the wan ip of the server, type: "95.183.239.163"
 
 
