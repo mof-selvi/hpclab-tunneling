@@ -4,23 +4,24 @@ Tunneling for hpclabs
 thanks to [localtunnel](https://github.com/localtunnel/localtunnel)
 
 
-# install jupyter
+
+# Install Jupyter
 ```
 conda install -c anaconda jupyter
 ```
 
 
-# define your password
+###### define your password
 ```
 jupyter notebook password
 ```
 
 
 
-# go to ".jupyter/jupyter_notebook_config.json"
-# add "notebook_dir":"/cta/users/{yourusername}", replace {yourusername} with your hpc username
-# final look will be something like:
-
+###### go to ".jupyter/jupyter_notebook_config.json"
+###### add "notebook_dir":"/cta/users/{yourusername}"
+###### replace {yourusername} with your hpc username
+###### final look will be something like:
 ```
 {
   "NotebookApp": {
@@ -33,18 +34,23 @@ jupyter notebook password
 
 
 
-# start and test your JLab
+###### start and test your JLab
 ```
 /cta/users/{yourusername}/.conda/envs/myenv/bin/jupyter lab --no-browser --port=8889
 ```
-# if it works, Ctrl+C to exit it.
+###### if it works, Ctrl+C to exit it.
+
+
+
 
 
 ---
 
 
 
-# install nvm
+# Install NVM & Localtunnel
+
+###### Install nvm
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ```
@@ -59,7 +65,7 @@ nvm install v18.17.0
 
 
 
-# install localtunnel
+###### install localtunnel
 ```
 npm install -g localtunnel
 ```
@@ -69,14 +75,15 @@ npm install -g localtunnel
 
 ---
 
+# tunnel.sh
 
 
-# crate a file named tunnel.sh
+###### crate a file named tunnel.sh
 ```
 nano tunnel.sh
 ```
 
-## put these into it:
+###### put these into it:
 ```
 #!/bin/bash
 if ! pgrep -x node >/dev/null
@@ -86,7 +93,7 @@ fi
 ```
 
 
-## set chmods
+###### set chmods
 ```
 chmod +x ./tunnel.sh
 ```
@@ -96,15 +103,16 @@ chmod +x ./tunnel.sh
 
 ---
 
+# start.sh
 
 
-# crate a file named start.sh
+###### crate a file named start.sh
 ```
 nano start.sh
 ```
 
 
-## put these into it:
+###### put these into it:
 ```
 #!/bin/bash
 /cta/users/{yourusername}/.conda/envs/{yourenvironment}/bin/jupyter lab --no-browser --port=8889 > jlab.log 2>&1 & 
@@ -113,37 +121,31 @@ watch n30 ./tunnel.sh > watching.log 2>&1 &
 
 
 
-## set chmods
+###### set chmods
 ```
 chmod +x ./start.sh
 ```
 
 
 
-
----
-
-
-
-
-## to start:
+###### to start:
 ```
 ./start.sh
 ```
 
 
 
-# the response will be something like "your url is: https://{yourusername}-hpc.loca.lt", connect directly to it
-# the website will ask you the wan ip of the server, type: "95.183.239.163"
+###### the response will be something like "your url is: https://{yourusername}-hpc.loca.lt", connect directly to it
+###### the website will ask you the wan ip of the server, type: "95.183.239.163"
 
 
 
 ---
 
+# stop.sh
 
 
-
-# to stop:
+###### to stop:
 ```
 ps -aux | grep jupyter
 ```
@@ -168,7 +170,7 @@ kill -9 {processid}
 ```
 
 
-# or create a file named stop.sh
+###### or create a file named stop.sh
 ```
 #!/bin/bash
 kill -9 $(pgrep -f bin/lt)
@@ -177,14 +179,14 @@ kill -9 $(pgrep -x jupyter-lab)
 ```
 
 
-## and do:
+###### and do:
 ```
 chmod +x stop.sh
 ```
 
 
 
-# Now to stop the tunneling:
+###### Now to stop the tunneling:
 ```
 ./stop.sh
 ```
