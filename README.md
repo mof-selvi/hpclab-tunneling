@@ -75,12 +75,12 @@ npm install -g localtunnel
 
 ---
 
-# tunnel.sh
+# hpct_tunnel.sh
 
 
-###### crate a file named tunnel.sh
+###### crate a file named hpct_tunnel.sh
 ```
-nano tunnel.sh
+nano hpct_tunnel.sh
 ```
 
 ###### put these into it:
@@ -88,14 +88,14 @@ nano tunnel.sh
 #!/bin/bash
 if ! pgrep -x node >/dev/null
 then
-    lt --subdomain {yourusername}-myhpc --port 8889 > tunneling.log 2>&1 & 
+    lt --subdomain {yourusername}-myhpc --port 8889 > hpct_tunneling.log 2>&1 & 
 fi
 ```
 
 
 ###### set chmods
 ```
-chmod +x ./tunnel.sh
+chmod +x ./hpct_tunnel.sh
 ```
 
 
@@ -104,12 +104,12 @@ chmod +x ./tunnel.sh
 
 ---
 
-# jlab.sh
+# hpct_jlab.sh
 
 
-###### crate a file named jlab.sh
+###### crate a file named hpct_jlab.sh
 ```
-nano jlab.sh
+nano hpct_jlab.sh
 ```
 
 ###### put these into it:
@@ -117,14 +117,14 @@ nano jlab.sh
 #!/bin/bash
 if ! pgrep -x jupyter-lab >/dev/null
 then
-    /cta/users/{yourusername}/.conda/envs/{yourenvironment}/bin/jupyter lab --no-browser --port=8889 > jlab.log 2>&1 & 
+    /cta/users/{yourusername}/.conda/envs/{yourenvironment}/bin/jupyter lab --no-browser --port=8889 > hpct_jlab.log 2>&1 & 
 fi
 ```
 
 
 ###### set chmods
 ```
-chmod +x ./jlab.sh
+chmod +x ./hpct_jlab.sh
 ```
 
 
@@ -134,34 +134,34 @@ chmod +x ./jlab.sh
 
 ---
 
-# start.sh
+# hpct_start.sh
 
 
-###### crate a file named start.sh
+###### crate a file named hpct_start.sh
 ```
-nano start.sh
+nano hpct_start.sh
 ```
 
 
 ###### put these into it:
 ```
 #!/bin/bash
-watch n30 ./tunnel.sh > watching_jlab.log 2>&1 & 
-watch n30 ./tunnel.sh > watching_tunnel.log 2>&1 & 
+watch -n 120 ./tunnel.sh > hpct_watching_jlab.log 2>&1 & 
+watch -n 120 ./tunnel.sh > hpct_watching_tunnel.log 2>&1 & 
 ```
 
 
 
 ###### set chmods
 ```
-chmod +x ./start.sh
+chmod +x ./hpct_start.sh
 ```
 
 
 
 ###### to start:
 ```
-./start.sh
+./hpct_start.sh
 ```
 
 
@@ -173,7 +173,7 @@ chmod +x ./start.sh
 
 ---
 
-# stop.sh
+# hpct_stop.sh
 
 
 ###### to stop:
@@ -201,7 +201,7 @@ kill -9 {processid}
 ```
 
 
-###### or create a file named stop.sh
+###### or create a file named hpct_stop.sh
 ```
 #!/bin/bash
 kill -9 $(pgrep -f bin/lt)
@@ -212,13 +212,13 @@ kill -9 $(pgrep -x jupyter-lab)
 
 ###### and do:
 ```
-chmod +x stop.sh
+chmod +x hpct_stop.sh
 ```
 
 
 
 ###### Now to stop the tunneling:
 ```
-./stop.sh
+./hpct_stop.sh
 ```
 
