@@ -70,15 +70,18 @@ npm install -g localtunnel
 
 
 
-# crate a file named start.sh
+# crate a file named tunnel.sh
 ```
 nano tunnel.sh
 ```
 
-# put these into it:
+## put these into it:
 ```
 #!/bin/bash
-lt --subdomain {yourusername}-hpc --port 8889 > tunneling.log 2>&1 &
+if ! pgrep -x node >/dev/null
+then
+    lt --subdomain {yourusername}-myhpc --port 8889 > tunneling.log 2>&1 & 
+fi
 ```
 
 
@@ -92,7 +95,7 @@ nano start.sh
 ```
 
 
-# put these into it:
+## put these into it:
 ```
 #!/bin/bash
 /cta/users/{yourusername}/.conda/envs/{yourenvironment}/bin/jupyter lab --no-browser --port=8889 > jlab.log 2>&1 & 
@@ -101,7 +104,7 @@ watch n30 ./tunnel.sh > watching.log 2>&1 &
 
 
 
-# set chmods
+## set chmods
 ```
 chmod +x ./tunnel.sh
 ```
@@ -113,7 +116,7 @@ chmod +x ./start.sh
 
 
 
-# to start:
+## to start:
 ```
 ./start.sh
 ```
@@ -151,11 +154,24 @@ kill -9 {processid}
 ```
 
 
-# or create a file named stop.sh and do: chmod +x stop.sh
+# or create a file named stop.sh
 ```
 #!/bin/bash
 kill -9 $(pgrep -f bin/lt)
 kill -9 $(pgrep -x watch)
 kill -9 $(pgrep -x jupyter-lab)
+```
+
+
+## and do:
+```
+chmod +x stop.sh
+```
+
+
+
+# Now to stop the tunneling:
+```
+./stop.sh
 ```
 
