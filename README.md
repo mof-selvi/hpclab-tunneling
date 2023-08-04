@@ -146,8 +146,8 @@ nano hpct_start.sh
 ###### put these into it:
 ```
 #!/bin/bash
-watch -n 120 ./tunnel.sh > hpct_watching_jlab.log 2>&1 & 
-watch -n 120 ./tunnel.sh > hpct_watching_tunnel.log 2>&1 & 
+watch -n 120 ./hpct_jlab.sh > hpct_watching_jlab.log 2>&1 & 
+watch -n 120 ./hpct_tunnel.sh > hpct_watching_tunnel.log 2>&1 & 
 ```
 
 
