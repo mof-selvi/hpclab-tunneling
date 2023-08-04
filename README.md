@@ -151,3 +151,11 @@ kill -9 {processid}
 ```
 
 
+# or create a file named stop.sh and do: chmod +x stop.sh
+```
+#!/bin/bash
+kill -9 $(pgrep -f bin/lt)
+kill -9 $(pgrep -x watch)
+kill -9 $(pgrep -x jupyter-lab)
+```
+
