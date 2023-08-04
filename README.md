@@ -101,6 +101,37 @@ chmod +x ./tunnel.sh
 
 
 
+
+---
+
+# jlab.sh
+
+
+###### crate a file named jlab.sh
+```
+nano jlab.sh
+```
+
+###### put these into it:
+```
+#!/bin/bash
+if ! pgrep -x jupyter-lab >/dev/null
+then
+    /cta/users/{yourusername}/.conda/envs/{yourenvironment}/bin/jupyter lab --no-browser --port=8889 > jlab.log 2>&1 & 
+fi
+```
+
+
+###### set chmods
+```
+chmod +x ./jlab.sh
+```
+
+
+
+
+
+
 ---
 
 # start.sh
@@ -115,8 +146,8 @@ nano start.sh
 ###### put these into it:
 ```
 #!/bin/bash
-/cta/users/{yourusername}/.conda/envs/{yourenvironment}/bin/jupyter lab --no-browser --port=8889 > jlab.log 2>&1 & 
-watch n30 ./tunnel.sh > watching.log 2>&1 & 
+watch n30 ./tunnel.sh > watching_jlab.log 2>&1 & 
+watch n30 ./tunnel.sh > watching_tunnel.log 2>&1 & 
 ```
 
 
