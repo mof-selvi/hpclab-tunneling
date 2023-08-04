@@ -40,7 +40,7 @@ jupyter notebook password
 # if it works, Ctrl+C to exit it.
 
 
-
+---
 
 
 
@@ -59,14 +59,15 @@ nvm install v18.17.0
 
 
 
-
-
 # install localtunnel
 ```
 npm install -g localtunnel
 ```
 
 
+
+
+---
 
 
 
@@ -85,7 +86,15 @@ fi
 ```
 
 
+## set chmods
+```
+chmod +x ./tunnel.sh
+```
 
+
+
+
+---
 
 
 
@@ -106,12 +115,13 @@ watch n30 ./tunnel.sh > watching.log 2>&1 &
 
 ## set chmods
 ```
-chmod +x ./tunnel.sh
-```
-```
 chmod +x ./start.sh
 ```
 
+
+
+
+---
 
 
 
@@ -125,6 +135,10 @@ chmod +x ./start.sh
 
 # the response will be something like "your url is: https://{yourusername}-hpc.loca.lt", connect directly to it
 # the website will ask you the wan ip of the server, type: "95.183.239.163"
+
+
+
+---
 
 
 
