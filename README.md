@@ -21,7 +21,7 @@ jupyter notebook password
 ###### go to ".jupyter/jupyter_notebook_config.json"
 ###### add "notebook_dir":"/cta/users/{yourusername}"
 ###### replace {yourusername} with your hpc username
-###### final look will be something like:
+###### the final look of the json file will be something like:
 ```
 {
   "NotebookApp": {
