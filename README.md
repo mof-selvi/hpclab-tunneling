@@ -86,7 +86,7 @@ nano hpct_tunnel.sh
 ###### put these into it:
 ```
 #!/bin/bash
-if ! pgrep -x node >/dev/null
+if ! pgrep -f bin/lt >/dev/null
 then
     lt --subdomain {yourusername}-myhpc --port 8889 > hpct_tunneling.log 2>&1 & 
 fi
