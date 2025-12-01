@@ -86,7 +86,7 @@ nano hpct_tunnel.sh
 ###### put these into it:
 ```
 #!/bin/bash
-if ! pgrep -f bin/lt >/dev/null
+if ! pgrep -u $(whoami) -f bin/lt >/dev/null
 then
     lt --subdomain {yourusername}-myhpc --port 8889 > hpct_tunneling.log 2>&1 & 
 fi
@@ -115,7 +115,7 @@ nano hpct_jlab.sh
 ###### put these into it:
 ```
 #!/bin/bash
-if ! pgrep -x jupyter-lab >/dev/null
+if ! pgrep -u $(whoami) -x jupyter-lab >/dev/null
 then
     /cta/users/{yourusername}/.conda/envs/{yourenvironment}/bin/jupyter lab --no-browser --port=8889 > hpct_jlab.log 2>&1 & 
 fi
