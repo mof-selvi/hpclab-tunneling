@@ -204,9 +204,9 @@ kill -9 {processid}
 ###### or create a file named hpct_stop.sh
 ```
 #!/bin/bash
-kill -9 $(pgrep -f bin/lt)
-kill -9 $(pgrep -x watch)
-kill -9 $(pgrep -x jupyter-lab)
+kill -9 $(pgrep -u $(whoami) -f bin/lt)
+kill -9 $(pgrep -u $(whoami) -x watch)
+kill -9 $(pgrep -u $(whoami) -x jupyter-lab)
 ```
 
 
